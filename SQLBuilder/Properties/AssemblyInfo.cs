@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SQLBuilder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SQL Builder")]
+[assembly: AssemblyDescription("SQL Builder is a Windows PHP Code Generator Utility.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SQLBuilder")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
+[assembly: AssemblyCompany("Droitech Games")]
+[assembly: AssemblyProduct("SQL Builder")]
+[assembly: AssemblyCopyright("Copyright © Droitech Games 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
