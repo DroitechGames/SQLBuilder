@@ -15,6 +15,9 @@ namespace SQLBuilder
         public SQLMainWindow()
         {
             InitializeComponent();
+            textBox1.Text = "localhost";
+            textBox2.Text = "";
+            textBox3.Text = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -36,9 +39,14 @@ namespace SQLBuilder
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string imagecopy = "http://www.iconarchive.com/show/mnemo-icons-by-hechiceroo.html";
+            string imagecopy = "http://www.iconarchive.com/show/mnemo-icons-by-hechiceroo.html" + Environment.NewLine + Environment.NewLine + "Developed by Droitech Games. Free and Open Source Software;";
 
             MessageBox.Show(imagecopy," Icons by Hechiceroo | MNEMO ICONS ");
+        }
+
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }
