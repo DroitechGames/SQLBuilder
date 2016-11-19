@@ -15,9 +15,10 @@ namespace SQLBuilder
         public SQLMainWindow()
         {
             InitializeComponent();
-            textBox1.Text = "localhost";
-            textBox2.Text = "";
-            textBox3.Text = "";
+            hostTextBox.Text = "localhost";
+            dbTextbox.Text = "";
+            userTextbox.Text = "";
+            passTextbox.Text = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -27,14 +28,21 @@ namespace SQLBuilder
 
         private void button2_Click(object sender, EventArgs e)
         {
-            richTextBox1.Clear();
+            QueryBox.Clear();
         }
-
+        static bool checkState;
         private void button1_Click(object sender, EventArgs e)
         {
             PHP_5_MySQLi P5_SQLI = new PHP_5_MySQLi();
-
-            richTextBox1.Text = P5_SQLI.UseMySQLi(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
+            if (_UseMD5.Checked != true)
+            {
+                checkState = false;
+                MessageBox.Show("MD5 Not Selected.");
+            }
+            else
+            {
+                QueryBox.Text = P5_SQLI.UseMySQLi(hostTextBox.Text, dbTextbox.Text, userTextbox.Text, passTextbox.Text, _ConnectionVar.Text, _ConnectionError.Text, checkState);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
