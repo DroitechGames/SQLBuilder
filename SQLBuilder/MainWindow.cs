@@ -15,10 +15,10 @@ namespace SQLBuilder
         public SQLMainWindow()
         {
             InitializeComponent();
-            hostTextBox.Text = "localhost";
-            dbTextbox.Text = "";
-            userTextbox.Text = "";
-            passTextbox.Text = "";
+            hostTextBox.Text    = "localhost";
+            dbTextbox.Text      = "e.g your_db";
+            userTextbox.Text    = "";
+            passTextbox.Text    = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,10 +37,12 @@ namespace SQLBuilder
             if (_UseMD5.Checked != true)
             {
                 checkState = false;
-                MessageBox.Show("MD5 Not Selected.");
+                //MessageBox.Show("MD5 Not Selected.");
+                QueryBox.Text = P5_SQLI.UseMySQLi(hostTextBox.Text, dbTextbox.Text, userTextbox.Text, passTextbox.Text, _ConnectionVar.Text, _ConnectionError.Text, checkState);
             }
-            else
+            else if (_UseMD5.Checked == true)
             {
+                checkState = true;
                 QueryBox.Text = P5_SQLI.UseMySQLi(hostTextBox.Text, dbTextbox.Text, userTextbox.Text, passTextbox.Text, _ConnectionVar.Text, _ConnectionError.Text, checkState);
             }
         }
@@ -49,12 +51,12 @@ namespace SQLBuilder
         {
             string imagecopy = "http://www.iconarchive.com/show/mnemo-icons-by-hechiceroo.html" + Environment.NewLine + Environment.NewLine + "Developed by Droitech Games. Free and Open Source Software;";
 
-            MessageBox.Show(imagecopy," Icons by Hechiceroo | MNEMO ICONS ");
+            MessageBox.Show(imagecopy," Icons by Hechiceroo | MNEMO ICONS | Freeware");
         }
 
-        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        private void hostTextBox_MouseClick(object sender, MouseEventArgs e)
         {
-            
+
         }
     }
 }

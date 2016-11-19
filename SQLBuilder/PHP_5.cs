@@ -8,15 +8,24 @@ namespace SQLBuilder
 {
     class PHP_5_MySQLi
     {
+        MD5 _MD5LIB = new MD5();
+        string _HP;
         public string UseMySQLi(string _SQLi_HOST, string _SQLi_DB, string _SQLi_USER, string _SQLi_PASS, string _SQLi_CONNECTION_VAR, string _SQLi_CUSTOM_ERROR_MSG, bool _MD5Checkstate)
         {
+            
             // create mysqli sql code from here.
+            if (_MD5Checkstate == true)
+            {
+                _HP = _MD5LIB.CreateMD5(_SQLi_PASS);
+            }
+            if (_MD5Checkstate == false)
+            {
+                _HP = _SQLi_PASS;
+            }
 
             string _H = _SQLi_HOST; // db host
-            
             string _U = _SQLi_USER; // db user
-            string _P = _SQLi_PASS; // db pass
-
+            string _P = _HP; // db pass
             string _D = _SQLi_DB; // db is last in the string...
 
             //////////////////////////////////////////////
@@ -28,7 +37,7 @@ namespace SQLBuilder
             string _DB_SQLI = _DB_VAR + _DB_VAR_STRING + " = mysqli_connect("; // start mysqli string.
             
             // create connection string. & formatting.
-            string _CNX_DBCONNECT = "<?php " + Environment.NewLine + Environment.NewLine + _DB_SQLI + " ' " + _H + " ' , ' " + _U + " ' , ' " + _P + " ' , ' " + _D + " );" + Environment.NewLine + Environment.NewLine; // create connection.
+            string _CNX_DBCONNECT = "<?php " + Environment.NewLine + Environment.NewLine + _DB_SQLI + " ' " + _H + " ' , ' " + _U + " ' , ' " + _P + " ' , ' " + _D + " ' );" + Environment.NewLine + Environment.NewLine; // create connection.
 
             // php connection params.
             string _CNX_ER = "mysqli_connect_errno()";
@@ -44,7 +53,7 @@ namespace SQLBuilder
 
             string _CNX_IFS_3 = _CNX_ER_2 + ");"  + Environment.NewLine  +"}";
             // build third part
-            string _CNX_ECHO = Environment.NewLine + Environment.NewLine + "echo 'Connected Successfully';" + Environment.NewLine + "?>";
+            string _CNX_ECHO = Environment.NewLine + Environment.NewLine + "echo 'Connected Successfully';" + Environment.NewLine + Environment.NewLine + " ?>";
             // combine the php if statement.
 
             string _CNX_IF_FINAL = _CNX_DBCONNECT + _CNX_IFS + _CNX_IFS_2 + _CNX_IFS_3 + _CNX_ECHO;
